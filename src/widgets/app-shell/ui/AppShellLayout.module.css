@@ -1,0 +1,81 @@
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidenav-col) minmax(0, 1fr) var(--contextbar-col);
+  grid-template-rows: var(--app-header-height) minmax(0, 1fr);
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--app-surface);
+  transition: grid-template-columns 160ms ease;
+}
+
+.shell[data-resizing='true'] {
+  transition: none;
+}
+
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  z-index: 200;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--mantine-color-body);
+}
+
+.navSlot {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.main {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.contextSlot {
+  grid-column: 3;
+  grid-row: 2;
+  min-width: 0;
+}
+
+/* Undocked panels leave their column at 0 and render into this fixed layer. */
+.floatingLayer {
+  position: fixed;
+  inset: 0;
+  top: var(--app-header-height);
+  pointer-events: none;
+  z-index: 170;
+}
+
+.floatingLayer > * {
+  pointer-events: auto;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  top: var(--app-header-height);
+  background: rgba(11, 14, 22, 0.42);
+  border: none;
+  padding: 0;
+  z-index: 175;
+  animation: fade 140ms ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    transition: none;
+  }
+  .scrim {
+    animation: none;
+  }
+}

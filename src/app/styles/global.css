@@ -1,0 +1,60 @@
+:root {
+  --app-header-height: 56px;
+  --font-display: 'Inter Tight', Inter, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Shell chrome tokens. Declared per scheme because `:root` itself carries the
+     data-mantine-color-scheme attribute — a light-dark() mixin can't reach it. */
+  --app-border: var(--mantine-color-gray-3);
+  --app-surface: var(--mantine-color-gray-0);
+  --app-hover: var(--mantine-color-gray-1);
+  --app-active: var(--mantine-color-brand-0);
+}
+
+[data-mantine-color-scheme='dark'] {
+  --app-border: var(--mantine-color-dark-4);
+  --app-surface: var(--mantine-color-dark-8);
+  --app-hover: var(--mantine-color-dark-6);
+  --app-active: var(--mantine-color-dark-5);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility: tabular, tracked-out labels for anything numeric or machine-ish. */
+.u-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 400;
+  padding: 8px 14px;
+  border-radius: var(--mantine-radius-sm);
+  background: var(--mantine-color-body);
+  border: 1px solid var(--app-border);
+  font-size: var(--mantine-font-size-sm);
+  transition: top 120ms ease;
+}
+
+.skip-link:focus-visible {
+  top: 8px;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--mantine-color-brand-5);
+  outline-offset: 2px;
+}

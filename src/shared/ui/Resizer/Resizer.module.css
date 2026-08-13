@@ -1,0 +1,47 @@
+.resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 9px;
+  cursor: col-resize;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 5;
+  touch-action: none;
+}
+
+.resizer[data-side='end'] {
+  right: -4px;
+}
+
+.resizer[data-side='start'] {
+  left: -4px;
+}
+
+.resizer::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: transparent;
+  transition: background 120ms ease;
+}
+
+.resizer:hover::after,
+.resizer:focus-visible::after,
+.resizer[data-active]::after {
+  background: var(--mantine-color-brand-5);
+}
+
+.resizer:focus-visible {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resizer::after {
+    transition: none;
+  }
+}

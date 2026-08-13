@@ -1,0 +1,51 @@
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-sm);
+  padding-inline: var(--mantine-spacing-sm);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-xs);
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tagline {
+  display: none;
+}
+
+@media (min-width: 62em) {
+  .tagline {
+    display: block;
+  }
+}
+
+.nav {
+  display: none;
+}
+
+@media (min-width: 75em) {
+  .nav {
+    display: flex;
+    gap: 2px;
+  }
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
